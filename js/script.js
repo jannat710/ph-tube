@@ -15,31 +15,37 @@ const handleCategory = async () => {
 
 
 const handleLoad = async (categoryId) => {
-    console.log(categoryId);
+    // console.log(categoryId);
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`
     );
     const data = await res.json();
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = "";
-
-    data.data.forEach((image) => {
+    const category = data.data;
+    category.forEach((image) => {
+        const seconds = `${image?.others?.posted_date}`;
+        const hours = Math.floor(seconds/3600);
+        const minutes =Math.floor ((seconds/3600)/60);
+        const times = `${hours}hrs ${minutes} min ago` ;
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="card card-compact bg-base-100 shadow-xl">
-        <figure><img class="w-full mx-auto h-60 rounded-lg" src=${image?.thumbnail} alt="" /></figure>
-
-        <div class="flex justify-center items-center ml-4">
+        <div class=" relative "><img class="w-full mx-auto h-60 rounded-lg" src=${image?.thumbnail} alt="" />
+        <div class="absolute rounded-lg bottom-4 right-4 bg-[#171717] text-white">
+        ${hours===0 && minutes===0 ? '': times }</div>
+        </div>
+        <div class="flex justify-start space-x-5 m-5 items-center ml-4">
         <div class="avatar">
-        <div class="w-16 rounded-full">
+        <div class="w-14 rounded-full">
         <img src=${image?.authors[0]?.profile_picture} />
         </div>
         </div>
 
-        <div class="card-body">
-        <h2 class="card-title">${image.title}</h2>
-        <div class="flex ">
+        <div class="">
+        <h2 class="card-title">${image.title.slice(0, 30)}</h2>
+        <div class="flex justify-start items-center gap-3">
         <p>${image?.authors[0]?.profile_name}</p>
-        <p>${image?.authors[0]?.verified ? '<img src="images/mark.svg" />' :""}</p>
+        <p>${image?.authors[0]?.verified ? '<img src="images/mark.svg" />' : ""}</p>
         </div>
         <p>${image?.others?.views} views</p>
         </div>
