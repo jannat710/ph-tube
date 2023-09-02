@@ -3,7 +3,6 @@ const handleCategory = async () => {
     const data = await res.json();
     const categories = data.data;
     const tabContainer = document.getElementById("tab-container");
-    console.log(categories);
     categories.slice(0, 4).forEach((category) => {
         const div = document.createElement("div");
         div.innerHTML = `
@@ -22,8 +21,9 @@ const handleLoad = async (categoryId) => {
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = "";
     const category = data.data;
-    console.log(data.data.length);
-    
+    // console.log(data.data);
+
+
     //No Content Show
     const noContainer = document.getElementById("no-content");
     noContainer.innerHTML = "";
@@ -44,6 +44,14 @@ const handleLoad = async (categoryId) => {
         noContainer.classList.remove('hidden');
     }
     category.forEach((image) => {
+          //sort
+        const view= image?.others?.views;
+        let arrayIs = [];
+        let viewArray = parseFloat(view.split(" "));
+        console.log(viewArray);
+        
+
+        //convert min and hr 
         const seconds = `${image?.others?.posted_date}`;
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds / 3600) / 60);
