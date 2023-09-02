@@ -1,11 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blogs</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>hi</h1>
+
+<body class="bg-slate-100">
+    <header>
+        <div class="border-solid border-2 p-3 bg-sky-500">
+            <h1 class="text-center text-4xl md:text-4xl lg:text-5xl">Blog Questions
+                <div class="swap-off">🥳</div>
+            </h1>
+        </div>
+    </header>
+    <main class="p-10 md:p-15 lg:p-20">
+        <ol class="my:5 md:my-8 lg:my-10 px-10">
+            <li class="text-xl"><span class="font-bold">1. </span>Discuss the scope of var, let, and const</li>
+            <li class="text-xl"><span class="font-bold">2. </span>Tell us the use cases of null and undefined</li>
+            <li class="text-xl"><span class="font-bold">3. </span>What do you mean by REST API?</li>
+        </ol>
+<div class="w-full mx-auto">
+    <a href="">
+        <p class="font-bold text-center text-xl py-5">1. Discuss the scope of var, let, and const</p>
+    </a>
+    <div class="w-50 mx-auto"><img class="w-1/2 mx-auto" src="images/vlet.png" alt=""></div>
+    <div class="my-3">
+        <h2 class="text-blue-700 text-xl underline">var: </h2>
+        <p class="text-xl">It creates a function scoped variable which can be reassigned or redeclared .</p>
+    </div>
+    <div>
+        <h2 class="text-blue-700 text-xl underline">let: </h2>
+        <p class="text-xl">It creates a block-scoped variable which can be reassigned but can not be redeclared .</p>
+    </div>
+    <div>
+        <h2 class="text-blue-700 text-xl underline">const: </h2>
+        <p class="text-xl">It also creates a block-scoped variable but can not be reassigned or redeclared .</p>
+    </div>
+</div>
+
+<div class="w-full mx-auto">
+    <a href="">
+        <p class="font-bold text-center text-xl py-5 ">2. Tell us the use cases of null and undefined</p>
+    </a>
+    <div class="w-50 mx-auto pb-5"><img class="w-1/2 mx-auto" src="images/null-undefined.jpg" alt=""></div>
+    <div class="flex flex-col w-full lg:flex-row">
+        <div class="grid flex-grow card bg-base-300 rounded-box p-10">
+            <h3 class="text-center font-semibold">Null</h3>
+            <ol class="list-decimal">
+                <li class="text-left">Variable that is not initialized will give undefined</li>
+                <li class="text-left">Function with no return</li>
+                <li class="text-left">Parameter that is not passed will be undefined</li>
+                <li class="text-left">If return has nothing on the right side will return undefined</li>
+                <li class="text-left">Property that doesn't exists on an object will give you undefined</li>
+                <li class="text-left">Accessing array elements outside of the index range </li>
+                <li class="text-left">Deleting an element inside an array</li>
+                <li class="text-left">Set a value directly to undefined</li>
+            </ol>
+        </div> 
+        <div class="p-4"></div> 
+        <div class="grid flex-grow card bg-base-300 rounded-box p-10">
+            <h3 class="text-center font-semibold">Null</h3>
+            <ol class="list-decimal">
+                <li class="text-left">Null is a special value that represents a missing object.</li>
+                <li class="text-left">Could be assign</li>
+                <li class="text-left">Type of object</li>
+                <li class="text-left">Variables assigned with literal null</li>
+                <li class="text-left">Null is falsy, meaning it evaluates to false in a boolean context.</li>
+                <li class="text-left">To check if a value is null , you use the strict equality operator ===</li>
+                <li class="text-left">Type of null return an object</li>
+                <li class="text-left">If the function returns null instead of an object, you'll get a TypeError</li>
+            </ol>
+        </div>
+
+      </div>
+</div>
+
+<div class="w-full mx-auto">
+    <a href="">
+        <p class="font-bold text-center text-xl py-5">3. What do you mean by REST API?</p>
+    </a>
+    <div class="w-50 mx-auto"><img class="w-1/2 mx-auto" src="images/restapi.png" alt=""></div>
+    <div class="my-3">
+        <p class="text-xl">REST API is a way of accessing web services in a simple and flexible way without having any processing.</p>
+    </div>
+</div>
+
+    </main>
 </body>
+
 </html>
