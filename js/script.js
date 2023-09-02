@@ -3,7 +3,7 @@ const handleCategory = async () => {
     const data = await res.json();
     const categories = data.data;
     const tabContainer = document.getElementById("tab-container");
-    // console.log(categories);
+    console.log(categories);
     categories.slice(0, 4).forEach((category) => {
         const div = document.createElement("div");
         div.innerHTML = `
@@ -15,24 +15,45 @@ const handleCategory = async () => {
 
 
 const handleLoad = async (categoryId) => {
-    // console.log(categoryId);
+
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`
     );
     const data = await res.json();
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = "";
     const category = data.data;
+    console.log(data.data.length);
+    
+    //No Content Show
+    const noContainer = document.getElementById("no-content");
+    noContainer.innerHTML = "";
+    const div = document.createElement("div");
+    div.innerHTML=`
+    <div class="card w-96 mx-auto bg-base-100 shadow-xl">
+    <figure class="px-10 pt-10">
+      <img src="images/Icon.png" alt="Shoes" class="rounded-xl" />
+    </figure>
+    <div class="card-body items-center text-center">
+      <p>Oops!! Sorry, There is no content here</p>
+    </div>
+  </div>
+    `;
+    noContainer.appendChild(div);
+
+    if (data.data.length === 0) {
+        noContainer.classList.remove('hidden');
+    }
     category.forEach((image) => {
         const seconds = `${image?.others?.posted_date}`;
-        const hours = Math.floor(seconds/3600);
-        const minutes =Math.floor ((seconds/3600)/60);
-        const times = `${hours}hrs ${minutes} min ago` ;
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds / 3600) / 60);
+        const times = `${hours}hrs ${minutes} min ago`;
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="card card-compact bg-base-100 shadow-xl">
         <div class=" relative "><img class="w-full mx-auto h-60 rounded-lg" src=${image?.thumbnail} alt="" />
         <div class="absolute rounded-lg bottom-4 right-4 bg-[#171717] text-white">
-        ${hours===0 && minutes===0 ? '': times }</div>
+        ${hours === 0 && minutes === 0 ? '' : times}</div>
         </div>
         <div class="flex justify-start space-x-5 m-5 items-center ml-4">
         <div class="avatar">
@@ -55,10 +76,10 @@ const handleLoad = async (categoryId) => {
         `;
         cardContainer.appendChild(div);
 
+
     });
 
 };
-
 
 handleCategory();
 handleLoad("1000");
